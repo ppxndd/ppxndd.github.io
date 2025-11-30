@@ -294,24 +294,6 @@
         // Set initial volume
         audio.volume = volumeControl.value;
 
-        // Play audio when page loads but wait a bit
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                audio.play()
-                    .then(() => {
-                        isPlaying = true;
-                        playPauseBtn.innerHTML = '<i class="play-icon">⏸️</i>';
-                        localStorage.setItem("musicPlaying", "true");
-
-                        setInterval(() => {
-                            localStorage.setItem("musicTime", audio.currentTime);
-                        }, 500);
-                    })
-                    .catch(error => {
-                        console.log("Audio play failed due to autoplay restrictions:", error);
-                    });
-            }, 1000);
-        });
 
         // Play/Pause button
         playPauseBtn.addEventListener('click', () => {
@@ -332,6 +314,25 @@
 
         // Function to go to next page
         function goToNextPage() {
+            audio.play()
+                .then(() => {
+                    isPlaying = true;
+                    playPauseBtn.innerHTML = '<i class="play-icon">⏸️</i>';
+                    localStorage.setItem("musicPlaying", "true");
+
+                    // บันทึกเวลาเพื่อเล่นต่อในหน้าถัดไป
+                    setInterval(() => {
+                        localStorage.setItem("musicTime", audio.currentTime);
+                    }, 500);
+
+                    // ไปหน้าใหม่หลังเพลงเริ่มแน่นอน
+                    window.location.href = "memorylane.html";
+                })
+                .catch(error => {
+                    console.log("Audio play failed due to autoplay restrictions:", error);
+                    // ถ้าเพลงยังไม่เล่น แต่ต้องไปต่อ → ยังไปได้
+                    window.location.href = "memorylane.html";
+                });
             // Add a bounce effect before navigating
             gsap.to('.next-button', {
                 scale: 1.2,
