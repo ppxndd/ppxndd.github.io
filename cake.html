@@ -660,15 +660,47 @@
     <!-- Enhanced Wish Message Popup -->
     <div class="wish-message" id="wishMessage" bis_skin_checked="1">
       <h2>✨ Happy Birthday! ✨</h2>
-      <p>Make a wish, Bestie! May all your dreams come true! 🎂✨</p>
+      <p>แฮปปี้เบิร์ธเดย์น้าาาา 💕
+        ขอให้วันนี้มีแต่เรื่องดี ๆ
+        และอย่าลืมหันมายิ้มให้ตัวเองบ่อย ๆ
+        เพราะเธอยิ้มที เค้าก็จะเห็นเขี้ยวเธอ555 🎂✨
+      </p>
       <button class="btn" onclick="closeWishMessage()">Thank you! ❤️</button>
     </div>
 
     <!-- Navigation Buttons -->
     <div class="nav-buttons" bis_skin_checked="1">
       <button class="btn" onclick="goBack()">◀ Back to Memory Lane</button>
-      <button class="btn" onclick="goNext()">Next Surprise ▶</button>
+      <!-- <button class="btn" onclick="goNext()">Next Surprise ▶</button> -->
     </div>
+
+    <audio id="birthday-song" loop>
+      <source src="ATIWIT CHARI -  Official Audio.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+      const audio = document.getElementById("birthday-song");
+
+      const isPlaying = localStorage.getItem("musicPlaying");
+      const lastTime = localStorage.getItem("musicTime");
+
+      // ตั้งค่า volume แล้วเริ่มเล่น
+      audio.volume = 0.5;
+
+      // ถ้าเพลงกำลังเล่น → เล่นต่อจากเวลาที่บันทึกไว้
+      if (isPlaying === "true") {
+        if (lastTime) audio.currentTime = parseFloat(lastTime);
+
+        audio.play().catch(err => {
+          console.log("Autoplay failed:", err);
+        });
+
+        // บันทึกเวลาใหม่อย่างต่อเนื่อง
+        setInterval(() => {
+          localStorage.setItem("musicTime", audio.currentTime);
+        }, 500);
+      }
+    </script>
 
     <script>
       // Global variables

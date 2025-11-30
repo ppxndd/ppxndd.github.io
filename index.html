@@ -274,10 +274,10 @@
 }</style></head>
 <body bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJMSU5LRURJTiI6ImRpc2FibGVkIiwiQ09ORklHIjoiZGlzYWJsZWQifSwidmVyc2lvbiI6IjIuMC4yMiIsInNjb3JlIjoyMDAyMn1d" __processed_0f899d02-c977-4ac2-8af0-0af2181c0594__="true" data-new-gr-c-s-check-loaded="14.1235.0" data-gr-ext-installed="">
     <div class="container" bis_skin_checked="1">
-        <h1 style="text-shadow: rgb(255, 255, 255) 0px 0px 10px, rgba(255, 255, 255, 0.8) 0px 0px 20px, rgba(255, 20, 147, 0.6) 0px 0px 30px;">Happy Birthday, </br>My Gurl! </br>🎉🎂</h1>
+        <h1 style="text-shadow: rgb(255, 255, 255) 0px 0px 10px, rgba(255, 255, 255, 0.8) 0px 0px 20px, rgba(255, 20, 147, 0.6) 0px 0px 30px;">Happy Birthday, </br>My Fangko! </br>🎉🎂</h1>
         <div class="typewriter-container" bis_skin_checked="1">
-            <div class="subtitle typewriter-text" bis_skin_checked="1">
-                Hey Bestie! Ready for your special surprise? Click to continue!
+            <div class="subtitle typewriter-text">
+                มีของดีจะให้ดู ไว้ใจได้ 😊 กดไปต่อแล้วรับรองยิ้มแน่นอน
                 <span class="cursor"></span>
             </div>
         </div>
@@ -289,8 +289,8 @@
         <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
     </div>
 
-    <audio id="birthday-song" loop="">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    <audio id="birthday-song" loop="">โ
+        <source src="ATIWIT CHARI -  Official Audio.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
@@ -312,6 +312,11 @@
                     .then(() => {
                         isPlaying = true;
                         playPauseBtn.innerHTML = '<i class="play-icon">⏸️</i>';
+                        localStorage.setItem("musicPlaying", "true");
+
+                        setInterval(() => {
+                            localStorage.setItem("musicTime", audio.currentTime);
+                        }, 500);
                     })
                     .catch(error => {
                         console.log("Audio play failed due to autoplay restrictions:", error);
